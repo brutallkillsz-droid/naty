@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naty Confeitaria | Catálogo Online</title>
+    
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIÁVEIS DE CORES E IDENTIDADE --- */
+        :root {
+            --rosa-claro: #FCE4EC;
+            --rosa-medio: #F48FB1;
+            --rosa-escuro: #D81B60;
+            --texto-escuro: #333333;
+            --texto-claro: #777777;
+            --fundo: #FAFAFA;
+            --branco: #FFFFFF;
+        }
+
+        /* --- RESET BÁSICO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--fundo);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+
+        /* --- TIPOGRAFIA --- */
+        h1, h2, h3 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--rosa-escuro);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--rosa-medio); }
+
+        /* --- CABEÇALHO (HERO SECTION) --- */
+        header {
+            background-color: var(--branco);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            border-bottom: 4px solid var(--rosa-claro);
+        }
+
+        /* --- LOGO DESTACADA --- */
+        .logo {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(0px 8px 12px rgba(216, 27, 96, 0.15));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--texto-claro);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--branco);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* --- TABELAS DE PREÇOS --- */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .price-table th, .price-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--rosa-claro);
+            text-align: left;
+        }
+
+        .price-table th {
+            color: var(--rosa-escuro);
+            font-weight: 600;
+        }
+
+        .price-table tr:hover {
+            background-color: #fdf6f8;
+        }
+
+        .destaque {
+            background-color: var(--rosa-claro);
+            font-weight: 600;
+        }
+
+        /* --- GALERIAS (CARROSSEL) --- */
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background: var(--rosa-medio);
+            border-radius: 4px;
+        }
+
+        .gallery-item {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- INFORMAÇÕES IMPORTANTES --- */
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            background: var(--rosa-claro);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- BOTÃO WHATSAPP FLUTUANTE --- */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (min-width: 768px) {
+            .gallery-item { flex: 0 0 45%; }
+            .price-table th, .price-table td { padding: 20px; }
+            .logo { max-width: 550px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <img src="WhatsApp Image 2026-10-12 at 19.34.04.jpeg" alt="Naty Confeitaria Logo" class="logo">
+        <p class="tagline">📍 Uberaba - MG | Transformando momentos em doces memórias</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- SEÇÃO: BOLOS -->
+        <section id="bolos">
+            <h2>Nossos Bolos</h2>
+            
+            <h3>🏆 Sabores Mais Procurados</h3>
+            <table class="price-table">
+                <tr>
+                    <th>Sabor</th>
+                    <th>Descrição</th>
+                    <th>Kg</th>
+                </tr>
+                <tr class="destaque">
+                    <td>🥛 Leite Ninho c/ Morango ⭐</td>
+                    <td>Massa branca, recheio de Leite Ninho e morangos frescos</td>
+                    <td>R$ 98,00</td>
+                </tr>
+                <tr>
+                    <td>🥕 Cenoura c/ Brigadeiro</td>
+                    <td>Massa fofinha de cenoura, cobertura brigadeiro 50%</td>
+                    <td>R$ 65,00</td>
+                </tr>
+                <tr>
+                    <td>🍫 Brigadeiro / Chocolate</td>
+                    <td>Massa de chocolate, recheio e cobertura 50%</td>
+                    <td>R$ 75,00</td>
+                </tr>
+                <tr>
+                    <td>🥥 Beijinho / Coco</td>
+                    <td>Massa branca, recheio cremoso de coco</td>
+                    <td>R$ 70,00</td>
+                </tr>
+                <tr>
+                    <td>🥛🍫 Ninho c/ Brigadeiro</td>
+                    <td>Camadas de Leite Ninho e brigadeiro 50%</td>
+                    <td>R$ 82,00</td>
+                </tr>
+            </table>
+
+            <h3>📏 Tamanhos e Porções</h3>
+            <table class="price-table">
+                <tr>
+                    <th>Peso</th>
+                    <th>Rendimento</th>
+                    <th>Faixa de Preço</th>
+                </tr>
+                <tr><td>1,0 kg</td><td>8 – 10 pessoas</td><td>R$ 65 – 110</td></tr>
+                <tr><td>1,5 kg</td><td>12 – 15 pessoas</td><td>R$ 98 – 165</td></tr>
+                <tr><td>2,0 kg</td><td>18 – 20 pessoas</td><td>R$ 130 – 220</td></tr>
+                <tr><td>2,5 kg</td><td>22 – 25 pessoas</td><td>R$ 163 – 275</td></tr>
+                <tr><td>3,0 kg</td><td>28 – 30 pessoas</td><td>R$ 195 – 330</td></tr>
+            </table>
+        </section>
+
+        <!-- SEÇÃO: BOLOS PERSONALIZADOS (APENAS BOLOS) -->
+        <section id="personalizados">
+            <h2>Bolos Personalizados</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: var(--texto-claro);">Deslize para ver nossos Bolos Temáticos ➡️</p>
+            
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.25.jpeg" alt="Bolo Mesversário Bosque">
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.25 (1).jpeg" alt="Bolo Mesversário Batman">
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.25 (2).jpeg" alt="Bolo Mesversário Homem Aranha">
+                </div>
+            </div>
+
+            <ul class="info-list" style="margin-top: 20px;">
+                <li>🖼️ Topper com foto/arte: R$ 30,00 – 40,00</li>
+                <li>🎨 Decoração simples: + R$ 35,00</li>
+                <li>🎨 Decoração elaborada: + R$ 50,00 – 80,00</li>
+                <li>💰 <strong>A partir de R$ 110,00</strong></li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO: DOCINHOS (APENAS DOCINHOS) -->
+        <section id="docinhos">
+            <h2>Nossos Docinhos</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: var(--texto-claro);">Deslize para ver as nossas encomendas e bandejas ➡️</p>
+            
+            <div class="gallery-container" style="margin-bottom: 20px;">
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.26 (3).jpeg" alt="Caixa de Brigadeiros e Beijinhos">
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.27 (3).jpeg" alt="Bandejas de Docinhos Brancos">
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.28.jpeg" alt="Caixa de Docinhos Ninho em forminhas azuis">
+                </div>
+                <div class="gallery-item">
+                    <img src="WhatsApp Image 2026-10-12 at 19.55.29 (4).jpeg" alt="Caixa de Encomenda Mista com letras">
+                </div>
+            </div>
+            
+            <table class="price-table">
+                <tr>
+                    <th>Sabor</th>
+                    <th>50 un.</th>
+                    <th>100 un.</th>
+                </tr>
+                <tr class="destaque">
+                    <td>🍫 Brigadeiro Tradicional ⭐</td>
+                    <td>R$ 65,00</td>
+                    <td>R$ 120,00</td>
+                </tr>
+                <tr>
+                    <td>🥛 Brigadeiro de Leite Ninho</td>
+                    <td>R$ 70,00</td>
+                    <td>R$ 130,00</td>
+                </tr>
+                <tr>
+                    <td>🥥 Beijinho de Coco</td>
+                    <td>R$ 68,00</td>
+                    <td>R$ 125,00</td>
+                </tr>
+            </table>
+            <p style="text-align: center; font-size: 0.9rem; color: var(--rosa-escuro);">
+                ✅ Mínimo 25 unidades por sabor. Misture sabores no mesmo pedido!
+            </p>
+        </section>
+
+        <!-- SEÇÃO: INFORMAÇÕES -->
+        <section id="informacoes">
+            <h2>Informações Importantes</h2>
+            <ul class="info-list">
+                <li>⏱️ <strong>Prazos:</strong> Pedidos com mínimo 48h para bolos e 3 dias para docinhos.</li>
+                <li>💳 <strong>Pagamento:</strong> Pix, dinheiro ou transferência (50% de sinal confirma o pedido).</li>
+                <li>🚚 <strong>Logística:</strong> Retirada em Uberaba. Entrega: R$ 10,00 – 25,00 conforme bairro.</li>
+                <li>❤️ <strong>Qualidade:</strong> Embalagem inclusa. Sem conservantes, feitos na hora!</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- SUBSTITUA O NÚMERO ABAIXO -->
+    <a href="https://wa.me/5534999999999?text=Olá,%20gostaria%20de%20fazer%20uma%20encomenda!" class="whatsapp-btn" target="_blank">
+        💬 Fazer Pedido
+    </a>
+
+</body>
+</html>
